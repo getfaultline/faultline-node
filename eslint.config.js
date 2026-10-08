@@ -19,7 +19,8 @@ const layer = (name) => ({
 });
 const indexImport = {
   regex: "^\\.\\.?/(\\.\\./)*index(\\.js)?$",
-  message: "Clean-architecture violation: the composition root (src/index.ts) must not be imported by inner layers.",
+  message:
+    "Clean-architecture violation: the composition root (src/index.ts) must not be imported by inner layers.",
 };
 const nodeBuiltins = {
   regex: "^node:",

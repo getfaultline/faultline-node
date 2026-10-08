@@ -23,7 +23,8 @@ function sanitizeLines(v: unknown): string[] | undefined {
 
 function sanitizeFrame(raw: unknown): StackFrame | undefined {
   if (!isRecord(raw)) return undefined;
-  const filename = typeof raw.filename === "string" && raw.filename !== "" ? raw.filename : "<unknown>";
+  const filename =
+    typeof raw.filename === "string" && raw.filename !== "" ? raw.filename : "<unknown>";
   const frame: StackFrame = { filename: truncate(filename, 1024), inApp: raw.inApp === true };
   const fn = optStr(raw.function, 1024);
   if (fn !== undefined) frame.function = fn;

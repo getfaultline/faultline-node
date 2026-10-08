@@ -5,7 +5,12 @@ import type { Hub, Integration } from "../application/hub";
 import type { Level, Scope } from "../domain";
 
 type AnyFn = (...args: unknown[]) => unknown;
-type Patched = { target: Record<string, unknown>; key: string; original: unknown; wrapped: unknown };
+type Patched = {
+  target: Record<string, unknown>;
+  key: string;
+  original: unknown;
+  wrapped: unknown;
+};
 
 const SDK_HEADER = "x-faultline-key";
 
@@ -41,9 +46,7 @@ export class HttpIntegration implements Integration {
       }
     }
     if (this.options.fetch !== false && typeof globalThis.fetch === "function") {
-      this.patch(globalThis, "fetch", (original) =>
-        this.wrapFetch(hub, original),
-      );
+      this.patch(globalThis, "fetch", (original) => this.wrapFetch(hub, original));
     }
   }
 
@@ -58,7 +61,11 @@ export class HttpIntegration implements Integration {
     }
   }
 
-  private patch(target: Record<string, unknown>, key: string, make: (original: AnyFn) => AnyFn): void {
+  private patch(
+    target: Record<string, unknown>,
+    key: string,
+    make: (original: AnyFn) => AnyFn,
+  ): void {
     const original = target[key];
     if (typeof original !== "function") return;
     const wrapped = make(original as AnyFn);
@@ -99,7 +106,12 @@ export class HttpIntegration implements Integration {
           try {
             const status = (res as { status?: number }).status;
             hub.addBreadcrumb(
-              { type: "http", category: "fetch", level: levelFor(status), data: { method, url, status_code: status } },
+              {
+                type: "http",
+                category: "fetch",
+                level: levelFor(status),
+                data: { method, url, status_code: status },
+              },
               scope,
             );
           } catch {
@@ -110,7 +122,12 @@ export class HttpIntegration implements Integration {
         (err: unknown) => {
           try {
             hub.addBreadcrumb(
-              { type: "http", category: "fetch", level: "error", data: { method, url, error: err instanceof Error ? err.message : String(err) } },
+              {
+                type: "http",
+                category: "fetch",
+                level: "error",
+                data: { method, url, error: err instanceof Error ? err.message : String(err) },
+              },
               scope,
             );
           } catch {
@@ -141,7 +158,12 @@ function instrumentClientRequest(hub: Hub, req: http.ClientRequest): void {
     try {
       const status = (req as { res?: { statusCode?: number } }).res?.statusCode;
       hub.addBreadcrumb(
-        { type: "http", category: "http", level: levelFor(status), data: { method, url, status_code: status } },
+        {
+          type: "http",
+          category: "http",
+          level: levelFor(status),
+          data: { method, url, status_code: status },
+        },
         scope,
       );
     } catch {

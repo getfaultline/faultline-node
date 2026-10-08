@@ -31,7 +31,8 @@ export function toJsonSafe(value: unknown, maxDepth = 6, maxBreadth = 200): unkn
     if (depth >= maxDepth) return Array.isArray(obj) ? "[Array]" : "[Object]";
     seen.add(obj);
     try {
-      if (obj instanceof Date) return Number.isNaN(obj.getTime()) ? "Invalid Date" : obj.toISOString();
+      if (obj instanceof Date)
+        return Number.isNaN(obj.getTime()) ? "Invalid Date" : obj.toISOString();
       if (obj instanceof Error) {
         return { name: obj.name, message: obj.message, stack: obj.stack };
       }

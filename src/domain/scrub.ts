@@ -70,6 +70,9 @@ export function scrubValue(value: unknown, options: ScrubOptions, depth = 0): un
   return value;
 }
 
-export function scrubRecord<T>(record: Record<string, T>, options: ScrubOptions): Record<string, T> {
+export function scrubRecord<T>(
+  record: Record<string, T>,
+  options: ScrubOptions,
+): Record<string, T> {
   return scrubValue(record, options) as Record<string, T>;
 }

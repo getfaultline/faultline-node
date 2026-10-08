@@ -125,7 +125,8 @@ export function resolveOptions(input: unknown): OptionsResult {
     const v = raw.maxBreadcrumbs;
     if (typeof v === "number" && Number.isInteger(v) && v >= 0) {
       maxBreadcrumbs = Math.min(v, LIMITS.maxBreadcrumbs);
-      if (v > LIMITS.maxBreadcrumbs) warnings.push(`"maxBreadcrumbs" capped at ${LIMITS.maxBreadcrumbs}`);
+      if (v > LIMITS.maxBreadcrumbs)
+        warnings.push(`"maxBreadcrumbs" capped at ${LIMITS.maxBreadcrumbs}`);
     } else warnings.push('"maxBreadcrumbs" must be a non-negative integer; using 50');
   }
 

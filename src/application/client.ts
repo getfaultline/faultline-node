@@ -8,6 +8,7 @@ import type {
   StackFrame,
 } from "../domain";
 import {
+  INGEST_PATH,
   LIMITS,
   SDK_NAME,
   dedupeKey,
@@ -70,7 +71,11 @@ export class FaultlineClient {
     return this.options.enabled && !this.closed;
   }
 
-  captureException(exception: unknown, hint: CaptureHint | undefined, scope: ScopeData | undefined): string | undefined {
+  captureException(
+    exception: unknown,
+    hint: CaptureHint | undefined,
+    scope: ScopeData | undefined,
+  ): string | undefined {
     try {
       if (!this.isEnabled) return undefined;
       const payload = this.buildException(exception, hint?.syntheticStack);
@@ -94,7 +99,10 @@ export class FaultlineClient {
       if (!this.isEnabled) return undefined;
       const lvl = isLevel(level) ? level : (hint?.level ?? scope?.level ?? "info");
       const event = this.baseEvent(lvl);
-      event.message = truncate(typeof message === "string" ? message : safeString(message), LIMITS.maxMessageLength);
+      event.message = truncate(
+        typeof message === "string" ? message : safeString(message),
+        LIMITS.maxMessageLength,
+      );
       return this.process(event, hint, scope);
     } catch (err) {
       this.deps.logger.error("captureMessage failed", err);
@@ -134,7 +142,7 @@ export class FaultlineClient {
 
   /** True when `url` targets this client's own ingest endpoint (used to avoid self-instrumentation). */
   isIngestUrl(url: string): boolean {
-    return url.startsWith(this.options.endpoint);
+    return url.startsWith(this.options.endpoint + INGEST_PATH);
   }
 
   // ---------------------------------------------------------------------------------------
@@ -155,7 +163,11 @@ export class FaultlineClient {
     return event;
   }
 
-  private process(event: FaultlineEvent, hint: CaptureContext | undefined, scope: ScopeData | undefined): string | undefined {
+  private process(
+    event: FaultlineEvent,
+    hint: CaptureContext | undefined,
+    scope: ScopeData | undefined,
+  ): string | undefined {
     const { options, logger } = { options: this.options, logger: this.deps.logger };
 
     if (options.sampleRate < 1 && this.deps.random.next() >= options.sampleRate) {
@@ -186,7 +198,11 @@ export class FaultlineClient {
     return event.eventId;
   }
 
-  private applyScope(event: FaultlineEvent, hint: CaptureContext | undefined, scope: ScopeData | undefined): void {
+  private applyScope(
+    event: FaultlineEvent,
+    hint: CaptureContext | undefined,
+    scope: ScopeData | undefined,
+  ): void {
     const runtimeContexts = this.deps.runtime.contexts();
     const tags = { ...scope?.tags, ...hint?.tags };
     if (Object.keys(tags).length > 0) event.tags = tags;
@@ -271,7 +287,12 @@ export class FaultlineClient {
           stacktrace: { frames: this.parseStack(value.stack) },
         };
         const cause = (value as { cause?: unknown }).cause;
-        if (cause !== undefined && cause !== null && depth + 1 < LIMITS.maxExceptionDepth && !seen.has(cause)) {
+        if (
+          cause !== undefined &&
+          cause !== null &&
+          depth + 1 < LIMITS.maxExceptionDepth &&
+          !seen.has(cause)
+        ) {
           payload.cause = build(cause, depth + 1);
         }
       } else {

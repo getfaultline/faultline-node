@@ -31,7 +31,11 @@ export interface ErrorHandlerOptions {
   shouldHandleError?: (error: unknown) => boolean;
 }
 
-export type FaultlineRequestHandler = (req: RequestLike, res: ResponseLike, next: NextFunction) => void;
+export type FaultlineRequestHandler = (
+  req: RequestLike,
+  res: ResponseLike,
+  next: NextFunction,
+) => void;
 export type FaultlineErrorHandler = (
   err: unknown,
   req: RequestLike,

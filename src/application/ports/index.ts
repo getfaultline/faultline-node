@@ -49,6 +49,9 @@ export interface IAsyncContext<T> {
 
 /** Static environment facts attached to every event. */
 export interface IRuntimeInfo {
-  contexts(): { runtime: { name: string; version: string }; os: { name: string; version?: string } };
+  contexts(): {
+    runtime: { name: string; version: string };
+    os: { name: string; version?: string };
+  };
   serverName(): string | undefined;
 }

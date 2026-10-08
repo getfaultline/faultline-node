@@ -147,7 +147,10 @@ export function captureException(exception: unknown, context?: CaptureContext): 
 }
 
 /** Captures a plain message. `level` defaults to "info". */
-export function captureMessage(message: string, level?: Level | CaptureContext): string | undefined {
+export function captureMessage(
+  message: string,
+  level?: Level | CaptureContext,
+): string | undefined {
   return guard(undefined, () => {
     if (isLevel(level)) return getHub().captureMessage(message, level);
     const ctx = level && typeof level === "object" ? level : undefined;

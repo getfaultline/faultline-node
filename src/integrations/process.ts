@@ -36,7 +36,7 @@ export class ProcessIntegration implements Integration {
   private exiting = false;
 
   constructor(options: ProcessIntegrationOptions = {}) {
-    this.proc = options.process ?? (process);
+    this.proc = options.process ?? process;
     this.exit = options.exit ?? ((code) => process.exit(code));
     this.writeStderr =
       options.writeStderr ??
@@ -77,7 +77,11 @@ export class ProcessIntegration implements Integration {
       return;
     }
     const others = this.hasOtherListeners("uncaughtException", this.onUncaughtException);
-    this.capture(error, "fatal", origin === "unhandledRejection" ? "onunhandledrejection" : "onuncaughtexception");
+    this.capture(
+      error,
+      "fatal",
+      origin === "unhandledRejection" ? "onunhandledrejection" : "onuncaughtexception",
+    );
     if (others) {
       void this.hub?.flush(this.flushTimeoutMs);
       return;

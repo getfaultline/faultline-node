@@ -66,7 +66,8 @@ export class HttpTransport implements ITransport {
 
   constructor(private readonly options: HttpTransportOptions) {
     this.url = options.endpoint.replace(/\/+$/, "") + INGEST_PATH;
-    this.fetchImpl = options.fetch ?? (typeof fetch === "function" ? fetch.bind(globalThis) : undefined);
+    this.fetchImpl =
+      options.fetch ?? (typeof fetch === "function" ? fetch.bind(globalThis) : undefined);
     this.random = options.random ?? Math.random;
     this.now = options.now ?? Date.now;
     this.o = {
@@ -240,7 +241,9 @@ export class HttpTransport implements ITransport {
         }
         case "retry": {
           if (attempt >= this.o.maxRetries) {
-            this.log.debug(`giving up after ${attempt + 1} attempts (${result.reason}); dropped ${batch.length} event(s)`);
+            this.log.debug(
+              `giving up after ${attempt + 1} attempts (${result.reason}); dropped ${batch.length} event(s)`,
+            );
             return;
           }
           const delay = this.backoff(attempt);
@@ -281,7 +284,10 @@ export class HttpTransport implements ITransport {
       const status = res.status;
       if (status === 429) {
         await res.body?.cancel().catch(() => undefined);
-        return { kind: "rate-limited", retryAfterMs: this.parseRetryAfter(res.headers.get("retry-after")) };
+        return {
+          kind: "rate-limited",
+          retryAfterMs: this.parseRetryAfter(res.headers.get("retry-after")),
+        };
       }
       if (status >= 200 && status < 300) {
         let parsed: unknown;
@@ -296,7 +302,11 @@ export class HttpTransport implements ITransport {
       if (status >= 500 || status === 408) return { kind: "retry", reason: `HTTP ${status}` };
       return { kind: "drop", status };
     } catch (err) {
-      const reason = controller.signal.aborted ? "timeout" : err instanceof Error ? err.message : "network error";
+      const reason = controller.signal.aborted
+        ? "timeout"
+        : err instanceof Error
+          ? err.message
+          : "network error";
       return { kind: "retry", reason };
     } finally {
       clearTimeout(timer);

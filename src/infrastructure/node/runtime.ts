@@ -30,13 +30,11 @@ export class ConsoleLogger implements ILogger {
   private readonly out: { log: ConsoleMethod; warn: ConsoleMethod; error: ConsoleMethod };
 
   constructor(private readonly enabled: boolean) {
-     
     this.out = {
       log: console.log.bind(console),
       warn: console.warn.bind(console),
       error: console.error.bind(console),
     };
-     
   }
 
   debug(message: string, ...args: unknown[]): void {
