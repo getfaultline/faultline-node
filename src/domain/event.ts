@@ -1,6 +1,6 @@
 /**
  * Event payload contract (SDK → server). Mirrors section 1 of the Faultline spec and
- * CONTRACTS.md §2 exactly — field names and enums must not drift.
+ * CONTRACTS.md §2 exactly; field names and enums must not drift.
  */
 
 export const LEVELS = ["fatal", "error", "warning", "info", "debug"] as const;

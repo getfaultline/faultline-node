@@ -364,7 +364,7 @@ export function describeNonError(value: unknown): string {
     }
     const keys = Object.keys(value).slice(0, 10);
     const json = JSON.stringify(toJsonSafe(value, 3, 20));
-    return `Non-Error object thrown with keys: ${keys.join(", ") || "(none)"}${json ? ` — ${truncate(json, 1024)}` : ""}`;
+    return `Non-Error object thrown with keys: ${keys.join(", ") || "(none)"}${json ? `: ${truncate(json, 1024)}` : ""}`;
   } catch {
     return "Non-Error thrown";
   }

@@ -6,7 +6,7 @@ const endpoint = process.env.FAULTLINE_ENDPOINT ?? "http://localhost:4000";
 const port = Number(process.env.PORT ?? 3001);
 
 if (!apiKey) {
-  console.warn("FAULTLINE_API_KEY is not set — the SDK stays disabled and no events are sent.");
+  console.warn("FAULTLINE_API_KEY is not set; the SDK stays disabled and no events are sent.");
 }
 
 // 1. Initialize as early as possible.

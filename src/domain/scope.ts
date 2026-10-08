@@ -3,7 +3,7 @@ import { LIMITS } from "./limits";
 
 /**
  * Mutable bag of contextual data applied to every event captured while it is active.
- * Pure data structure: no I/O, no async context — the Hub decides which scope is current.
+ * Pure data structure: no I/O, no async context. The Hub decides which scope is current.
  */
 export class Scope {
   private tags: Record<string, string> = {};

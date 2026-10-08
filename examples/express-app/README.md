@@ -12,7 +12,7 @@ A minimal Express 5 app wired with `@faultline/node`.
 ## Run it
 
 ```bash
-# 1. build the SDK (the example links to ../.. — it uses the built dist/)
+# 1. build the SDK (the example links to ../.. and uses the built dist/)
 cd ../.. && pnpm install && pnpm build && cd examples/express-app
 
 # 2. install the example's own deps
@@ -36,7 +36,7 @@ Environment variables:
 
 | Variable             | Default                 | Purpose                       |
 | -------------------- | ----------------------- | ----------------------------- |
-| `FAULTLINE_API_KEY`  | —                       | ingest key (`flt_ingest_...`) |
+| `FAULTLINE_API_KEY`  | -                       | ingest key (`flt_ingest_...`) |
 | `FAULTLINE_ENDPOINT` | `http://localhost:4000` | Faultline server base URL     |
 | `FAULTLINE_DEBUG`    | unset                   | `1` prints SDK debug logs     |
 | `PORT`               | `3001`                  | port of this example app      |

@@ -2,7 +2,7 @@ import type { Hub, Integration } from "../application/hub";
 
 type Listener = (...args: unknown[]) => void;
 
-/** The subset of `process` used here — injectable for tests. */
+/** The subset of `process` used here, injectable for tests. */
 export interface ProcessLike {
   on(event: string, listener: Listener): unknown;
   off(event: string, listener: Listener): unknown;
