@@ -2,12 +2,12 @@
   "name": "faultline-example-express-app",
   "private": true,
   "type": "module",
-  "description": "Express app demonstrating @faultline/node",
+  "description": "Express app demonstrating @getfaultline/node",
   "scripts": {
     "start": "node server.js"
   },
   "dependencies": {
-    "@faultline/node": "link:../..",
+    "@getfaultline/node": "link:../..",
     "express": "^5.1.0"
   },
   "engines": {

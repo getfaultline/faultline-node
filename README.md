@@ -1,4 +1,4 @@
-# @faultline/node
+# @getfaultline/node
 
 The Node.js SDK for [Faultline](https://faultline.dev), a self-hostable error-tracking
 platform. It captures exceptions and messages, adds context (stack traces with source,
@@ -13,11 +13,11 @@ events to the Faultline ingest API.
 ## Quickstart
 
 ```bash
-pnpm add @faultline/node     # or npm i @faultline/node / yarn add @faultline/node
+pnpm add @getfaultline/node     # or npm i @getfaultline/node / yarn add @getfaultline/node
 ```
 
 ```ts
-import * as Faultline from "@faultline/node"; // or: const Faultline = require("@faultline/node")
+import * as Faultline from "@getfaultline/node"; // or: const Faultline = require("@getfaultline/node")
 
 Faultline.init({
   apiKey: process.env.FAULTLINE_API_KEY, // flt_ingest_...
@@ -38,7 +38,7 @@ Faultline.captureMessage("Payment webhook retried", "warning");
 
 ```ts
 import express from "express";
-import * as Faultline from "@faultline/node";
+import * as Faultline from "@getfaultline/node";
 
 Faultline.init({ apiKey: process.env.FAULTLINE_API_KEY });
 
@@ -131,7 +131,7 @@ Each event follows the shared Faultline event contract: `eventId` (uuid v4), `ti
 `level`, `platform: "node"`, `exception` (type, value, frames ordered oldest → newest, `cause`
 chain), `message`, `tags`, `user`, `request`, `contexts` (`runtime`, `os`, plus your own),
 `breadcrumbs`, `extra`, `fingerprint`, `environment`, `release`, `serverName`, and
-`sdk: { name: "@faultline/node", version }`.
+`sdk: { name: "@getfaultline/node", version }`.
 
 The SDK enforces the pinned limits before sending:
 

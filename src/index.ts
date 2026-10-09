@@ -60,7 +60,7 @@ export type {
 } from "./integrations/express";
 
 // One hub per process, shared between the ESM and CJS builds if both get loaded.
-const HUB_KEY = Symbol.for("@faultline/node.hub");
+const HUB_KEY = Symbol.for("@getfaultline/node.hub");
 function getHub(): Hub {
   const g = globalThis as unknown as Record<symbol, Hub | undefined>;
   let hub = g[HUB_KEY];

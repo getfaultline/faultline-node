@@ -1,4 +1,4 @@
-# Architecture decision log: `@faultline/node`
+# Architecture decision log: `@getfaultline/node`
 
 ## Layers
 
@@ -183,7 +183,7 @@ in `index.ts`.
 
 ### ADR-013: One hub per process
 
-- **Decision:** The singleton `Hub` lives on `globalThis[Symbol.for("@faultline/node.hub")]`.
+- **Decision:** The singleton `Hub` lives on `globalThis[Symbol.for("@getfaultline/node.hub")]`.
 - **Why:** If an app loads both the ESM and the CJS build (the dual-package hazard), they still
   share one scope stack and one client.
 

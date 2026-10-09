@@ -76,7 +76,7 @@ for (const [label, mod] of [
   await mod.flush(3000);
   const event = received[0]?.events?.[0];
   check(
-    event?.sdk?.name === "@faultline/node" &&
+    event?.sdk?.name === "@getfaultline/node" &&
       event?.platform === "node" &&
       event?.exception?.cause?.value === "root",
     `${label}: event delivered and shaped per contract`,

@@ -1,5 +1,5 @@
 {
-  "name": "@faultline/node",
+  "name": "@getfaultline/node",
   "version": "0.1.0",
   "description": "Node.js SDK for Faultline error tracking",
   "license": "MIT",

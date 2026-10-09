@@ -1,5 +1,5 @@
 import express from "express";
-import * as Faultline from "@faultline/node";
+import * as Faultline from "@getfaultline/node";
 
 const apiKey = process.env.FAULTLINE_API_KEY;
 const endpoint = process.env.FAULTLINE_ENDPOINT ?? "http://localhost:4000";

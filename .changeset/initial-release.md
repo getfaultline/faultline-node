@@ -1,5 +1,5 @@
 ---
-"@faultline/node": minor
+"@getfaultline/node": minor
 ---
 
 Initial release of the Faultline Node.js SDK: client, AsyncLocalStorage scopes, batched gzip

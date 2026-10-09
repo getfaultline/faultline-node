@@ -8,7 +8,7 @@ importers:
 
   .:
     dependencies:
-      '@faultline/node':
+      '@getfaultline/node':
         specifier: link:../..
         version: link:../..
       express:

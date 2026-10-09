@@ -32,7 +32,7 @@ describe("FaultlineClient: event building", () => {
       tags: { region: "eu", feature: "checkout" },
       user: { id: "u1", email: "a@b.c" },
       extra: { cart: 3 },
-      sdk: { name: "@faultline/node", version: "0.0.0-test" },
+      sdk: { name: "@getfaultline/node", version: "0.0.0-test" },
     });
     expect(e.exception?.type).toBe("TypeError");
     expect(e.exception?.stacktrace.frames.at(-1)?.filename).toContain("client.test.ts");

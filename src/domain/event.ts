@@ -9,7 +9,7 @@ export type Level = (typeof LEVELS)[number];
 export const BREADCRUMB_TYPES = ["default", "http", "log", "query", "navigation"] as const;
 export type BreadcrumbType = (typeof BREADCRUMB_TYPES)[number];
 
-export const SDK_NAME = "@faultline/node" as const;
+export const SDK_NAME = "@getfaultline/node" as const;
 
 export interface StackFrame {
   filename: string;

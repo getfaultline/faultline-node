@@ -67,7 +67,7 @@ describe("public API end-to-end against a local ingest server", () => {
       fingerprint: ["pay-failure"],
       tags: { region: "eu", feature: "pay" },
       user: { id: "42", email: "dev@example.com" },
-      sdk: { name: "@faultline/node" },
+      sdk: { name: "@getfaultline/node" },
     });
     expect(ex?.exception?.cause?.value).toBe("root");
     expect(ex?.exception?.stacktrace.frames.at(-1)?.contextLine).toContain("new TypeError");

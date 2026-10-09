@@ -1,6 +1,6 @@
 # Faultline example: Express app
 
-A minimal Express 5 app wired with `@faultline/node`.
+A minimal Express 5 app wired with `@getfaultline/node`.
 
 | Route         | What happens                                                                  |
 | ------------- | ----------------------------------------------------------------------------- |

@@ -101,7 +101,7 @@ export const eventSchema = z
       .optional(),
     breadcrumbs: z.array(breadcrumbSchema).max(100).optional(),
     extra: z.record(z.string(), z.unknown()).optional(),
-    sdk: z.object({ name: z.literal("@faultline/node"), version: z.string().min(1) }).strict(),
+    sdk: z.object({ name: z.literal("@getfaultline/node"), version: z.string().min(1) }).strict(),
   })
   .strict();
 

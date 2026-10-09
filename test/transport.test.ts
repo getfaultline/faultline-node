@@ -23,7 +23,7 @@ function event(message = "hello"): FaultlineEvent {
     level: "error",
     platform: "node",
     message,
-    sdk: { name: "@faultline/node", version: "0.0.0-test" },
+    sdk: { name: "@getfaultline/node", version: "0.0.0-test" },
   };
 }
 

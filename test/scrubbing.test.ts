@@ -16,7 +16,7 @@ const base = (): FaultlineEvent => ({
   timestamp: new Date().toISOString(),
   level: "error",
   platform: "node",
-  sdk: { name: "@faultline/node", version: "1" },
+  sdk: { name: "@getfaultline/node", version: "1" },
 });
 
 describe("scrubbing", () => {

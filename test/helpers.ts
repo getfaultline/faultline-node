@@ -141,6 +141,6 @@ export const tick = () => new Promise((r) => setImmediate(r));
 
 /** Clears the process-wide scope held by the public API's singleton hub. */
 export function resetGlobalScope(): void {
-  const hub = (globalThis as Record<symbol, Hub | undefined>)[Symbol.for("@faultline/node.hub")];
+  const hub = (globalThis as Record<symbol, Hub | undefined>)[Symbol.for("@getfaultline/node.hub")];
   hub?.getRootScope().clear();
 }
