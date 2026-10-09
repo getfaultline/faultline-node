@@ -2,7 +2,7 @@ import type { FaultlineEvent, Level, User } from "./event";
 import { isLevel } from "./event";
 import { LIMITS } from "./limits";
 
-export const DEFAULT_ENDPOINT = "https://api.faultline.dev";
+export const DEFAULT_ENDPOINT = "https://www.faultsline.dev";
 export const INGEST_PATH = "/api/v1/ingest/events";
 
 export type BeforeSend = (

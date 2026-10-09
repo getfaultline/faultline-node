@@ -1,6 +1,6 @@
 # @getfaultline/node
 
-The Node.js SDK for [Faultline](https://faultline.dev), a self-hostable error-tracking
+The Node.js SDK for [Faultline](https://www.faultsline.dev), a self-hostable error-tracking
 platform. It captures exceptions and messages, adds context (stack traces with source,
 breadcrumbs, request data, user, tags), scrubs secrets, and sends batched, gzip-compressed
 events to the Faultline ingest API.
@@ -82,7 +82,7 @@ scope.
 | Option           | Type                                  | Default                                                        | Description                                                                                                                                                           |
 | ---------------- | ------------------------------------- | -------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `apiKey`         | `string`                              | **required**                                                   | Public ingest key (`flt_ingest_...`). Sent as `X-Faultline-Key`.                                                                                                      |
-| `endpoint`       | `string`                              | `https://api.faultline.dev`                                    | Base URL of the Faultline server. Override it when self-hosting.                                                                                                      |
+| `endpoint`       | `string`                              | `https://www.faultsline.dev`                                   | Base URL of the Faultline server. Override it when self-hosting.                                                                                                      |
 | `environment`    | `string`                              | -                                                              | e.g. `production`, `staging`.                                                                                                                                         |
 | `release`        | `string`                              | -                                                              | e.g. `api@1.4.2` or a git sha.                                                                                                                                        |
 | `serverName`     | `string`                              | `os.hostname()`                                                | Reported as `serverName`.                                                                                                                                             |

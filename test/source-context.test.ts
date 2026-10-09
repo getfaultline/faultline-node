@@ -65,7 +65,7 @@ describe("resolveOptions", () => {
   it("applies documented defaults", () => {
     const r = resolveOptions({ apiKey: "flt_ingest_x" });
     expect(r.ok && r.options).toMatchObject({
-      endpoint: "https://api.faultline.dev",
+      endpoint: "https://www.faultsline.dev",
       sampleRate: 1,
       maxBreadcrumbs: 50,
       sendDefaultPii: false,
